@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <link rel="stylesheet" type="text/css" href="global.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="envelope">
+        <div class="flap"></div>
+        <div class="body"></div>
+        <button class="card-button" onclick="playAudioFavoriteAndShowModal('modal1')">
+            <i class="fa-solid fa-heart"></i>
+        </button>
+    </div>
+    
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal1-title">To Aufa Nisa Afifa</h2>
+            </div>
+            <hr class="horizontal light mt-0 mb-2">
+            <div class="modal-body">
+                <p id="modal1-body"> Hei, Cantikkkk apa kabar? Aku harap kamu selalu sehat di sana, ya. Waktu memang berlalu begitu cepat, dan aku tak menyangka hubungan kita harus berakhir seperti ini. Aku sadar, semua ini terjadi karena kesalahan dan tingkahku di masa lalu. Aku ingin meminta maaf lagi, meskipun ini sudah berkali-kali aku ucapkan. Maaf atas segala hal yang pernah menyakiti kamu selama kita bersama.
+
+                    Aku sangat menyesal, tapi aku juga tahu bahwa aku harus menerima kenyataan. Kehilanganmu adalah hal yang paling berat, dan aku sadar hati kita kini tak lagi berbagi cerita yang sama. Andai saja aku bisa memutar waktu, aku pasti akan memperbaiki semuanya, agar kita tetap bersama mencapai tujuan yang kita impikan dan menghabiskan waktu bersama. Tapi aku tahu, itu hanya angan yang tak akan pernah terjadi.
+            
+                    Aku rindu, Fah. Aku rindu kamu, rindu cerita yang kita buat bersama. Perasaanku terhadapmu tak pernah berubah, meskipun semuanya telah berakhir. Tak ada satu pun yang bisa menggantikanmu di hati ini. Semuanya masih tentang kamu.
+            
+                    Sebelum aku selesai, aku ingin mengucapkan terima kasih. Terima kasih sudah memberi warna dalam hidupku, mengajarkan proses pendewasaan, dan mencintaiku dengan sepenuh hati. Aku akan selalu menghargai setiap momen yang kita lalui bersama. Dan terakhir, aku ingin bilang... Aku masih mencintai kamu, Aufaaa! Aku harap kamu masih menyimpan sedikit ruang di hatimu untuk aku. Please, don't be in love with someone else❤️.
+                </p>
+            </div>
+            <hr class="horizontal light mt-0 mb-2">
+            <div class="modal-footer">
+                <i class="fa-solid fa-arrow-right next-page-icon" onclick="playAudioAndOpenSecondModal()"></i>
+            </div>
+            <span class="close" onclick="closeModal1('modal1')">&times;</span>
+        </div>
+    </div>
+    
+    <div id="modal2" class="modaltwo">
+        <div class="modal-contenttwo">
+            <div class="modal-headertwo">
+                <h2 id="modal2-title">Happy Brithday Cantik!</h2>
+            </div>
+            <hr class="horizontal light mt-0 mb-2">
+            <div class="modal-bodytwo">
+                <p id="modal2-body">Semoga di hari spesialmu ini, kebahagiaan selalu menyertaimu, dan semua impianmu dapat terwujud. Meski perjalanan kita kini berbeda arah, aku tetap menghargai setiap momen indah yang pernah kita lalui bersama.
+
+                    Aku juga berharap kamu selalu diberkahi kesehatan, cinta, dan keberuntungan di setiap langkah hidupmu. Hari ini adalah hari yang istimewa, milikmu sepenuhnya, jadi rayakan dengan penuh sukacita dan senyuman.
+                    
+                    Selamat ulang tahun, Fah! 🎉!"</p>
+            </div>
+            <hr class="horizontal light mt-0 mb-2">
+            <div class="modal-footertwo">
+                <button class="next-page-btn" onclick="showStyledAlert()">Click Here</button>
+            </div>
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+        </div>
+    </div>
+    <audio id="audioFavorite" src="audio/songsfavorit.mp3" type="audio/mpeg"></audio>
+    <audio id="audioElement" src="audio/ultahafi.mp3" type="audio/mpeg"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        const button = document.querySelector('.card-button');
+        const flap = document.querySelector('.flap');
+
+        function playAudioFavoriteAndShowModal(modalId) {
+        // Memutar audio favorit
+        var audioFavorite = document.getElementById('audioFavorite');
+        audioFavorite.play().catch((error) => {
+            console.log('Audio tidak bisa diputar:', error);
+        });
+
+        // Menampilkan modal pertama
+        showModal(modalId);
+    }
+    
+        // Fungsi untuk membuka modal dengan ID tertentu
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal1(modalId) {
+    // Tutup modal yang sesuai dengan modalId
+    document.getElementById(modalId).style.display = 'none';
+
+    // Jika modal kedua ditutup, kembalikan flap ke posisi semula
+    if ( modalId === 'modal1') {
+        flap.style.transform = 'rotateX(0deg)';
+    }
+}
+    
+        // Fungsi untuk menutup modal dengan ID tertentu
+        function closeModal(modalId) {
+    // Tutup modal yang sesuai dengan modalId
+    document.getElementById(modalId).style.display = 'none';
+
+    // Jika modal kedua ditutup, kembalikan flap ke posisi semula dan hentikan audio utama
+    if (modalId === 'modal2') {
+        flap.style.transform = 'rotateX(0deg)';
+
+        // Hentikan audio utama
+        var audioElement = document.getElementById('audioElement');
+        audioElement.pause();
+        audioElement.currentTime = 0; // Reset audio ke awal
+
+        // Lanjutkan pemutaran audio favorit
+        var audioFavorite = document.getElementById('audioFavorite');
+        if (audioFavorite.paused) {
+            audioFavorite.play().catch((error) => {
+                console.log('Audio favorit tidak bisa diputar:', error);
+            });
+        }
+    }
+}
+    
+        // Event listener untuk tombol di amplop
+        button.addEventListener('click', () => {
+            flap.style.transform = 'rotateX(180deg)';
+            showModal('modal1'); // Membuka modal pertama
+        });
+    
+        // Fungsi untuk membuka modal kedua
+        function openSecondModal() {
+            closeModal('modal1'); // Menutup modal pertama
+            showModal('modal2'); // Membuka modal kedua
+        }
+
+        function playAudioAndOpenSecondModal() {
+    // Pause audio favorit tanpa reset ke awal
+    var audioFavorite = document.getElementById('audioFavorite');
+    audioFavorite.pause();
+
+    // Memutar audio utama
+    var audioElement = document.getElementById('audioElement');
+    audioElement.play().catch((error) => {
+        console.log('Audio tidak bisa diputar:', error);
+    });
+
+    // Menyembunyikan audio favorit (opsional)
+    audioFavorite.style.display = 'none';
+
+    // Membuka modal kedua
+    openSecondModal();
+}
+    
+        // Tutup modal saat klik di luar modal
+        window.onclick = function(event) {
+            const modal1 = document.getElementById('modal1');
+            const modal2 = document.getElementById('modal2');
+            if (event.target === modal1) {
+                closeModal('modal1');
+            } else if (event.target === modal2) {
+                closeModal('modal2');
+            }
+        };
+
+        function showStyledAlert() {
+            Swal.fire({
+  title: "I Miss U Bub.!!!",
+  width: 300,
+  padding: "1em",
+  color: "#FAEBD7",
+  background: "#800000",
+  backdrop: `
+    url("/image/loved.gif")
+    left top
+    no-repeat
+  `
+});
+    }
+    </script>
+</body>
+</html>
